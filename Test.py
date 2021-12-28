@@ -8,25 +8,30 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 import time
 
-service = Service(executable_path=ChromeDriverManager().install())
+def youtube(website):
 
-options = webdriver.ChromeOptions()
-options.add_experimental_option("detach", True)
-browser = webdriver.Chrome(chrome_options=options, service=service)
+    service = Service(executable_path=ChromeDriverManager().install())
 
-browser.maximize_window()
-browser.get("https://www.youtube.com/")
+    options = webdriver.ChromeOptions()
+    options.add_experimental_option("detach", True)
+    browser = webdriver.Chrome(chrome_options=options, service=service)
+
+    browser.maximize_window()
+    browser.get("https://www.youtube.com/")
 
 
-#wait = WebDriverWait(browser, 3)
-#visible = EC.visibility_of_element_located
+    #wait = WebDriverWait(browser, 3)
+    #visible = EC.visibility_of_element_located
 
-search = browser.find_element(By.CLASS_NAME, "ytd-searchbox")
-search.click()
+    search = browser.find_element(By.CLASS_NAME, "ytd-searchbox")
+    search.click()
 
-write = browser.find_element(By.NAME, "search_query")
-write.send_keys("AJR")
-browser.find_element(By.ID, "search-icon-legacy").click()
+    write = browser.find_element(By.NAME, "search_query")
+    write.send_keys(website)
+    browser.find_element(By.ID, "search-icon-legacy").click()
 
-time.sleep(4)
-browser.close()
+    time.sleep(10)
+    browser.close()
+
+website = input("What would you like to search on Youtube? ")
+youtube(website=website)
