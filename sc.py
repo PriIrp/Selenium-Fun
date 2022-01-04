@@ -16,6 +16,7 @@ def process(hr, minute):
             time.sleep(25)
 
 
-p = mp.Process(target=process, args=(18, 0))
+p = mp.Process(target=process, args=(15, 18))
 p.start()
 
+print("Hello World")
