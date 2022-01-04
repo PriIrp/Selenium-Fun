@@ -4,6 +4,7 @@ import datetime
 import sys
 import signal
 import os
+import Test
 
 def process(hr, minute):
     while True:
